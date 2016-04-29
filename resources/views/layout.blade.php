@@ -3,13 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>考试管理</title>
+    <link href="/css/libs.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/blue.css" rel="stylesheet">
-    <link href="/css/libs.css" rel="stylesheet">
-    <style>
-
-    </style>
 </head>
 <body>
 

@@ -10,17 +10,61 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
-                <li id="teachersNav"><a href="#">教师管理</a></li>
-                <li id="studentsNav"><a href="#">学生管理</a></li>
-                <li id="coursesNav"><a href="#">课程管理</a></li>
-                <li id="courseTimesNav"><a href="#">课时管理</a></li>
-                <li id="examNav"><a href="#">考试管理</a></li>
-                <li id="seeCourseNav"><a href="#">查看课程</a></li>
+                @if($signedIn)
+                    @can('admin', Auth::user())
+                        <li id="teachersNav"><a href="/teachers">教师管理</a></li>
+                        <li id="studentsNav"><a href="/students">学生管理</a></li>
+                    @endcan
+
+                    @can('teacher', Auth::user())
+                        <li id="coursesNav"><a href="/courses">课程管理</a></li>
+                        <li id="courseTimesNav"><a href="/courseTimes">课时管理</a></li>
+                        <li id="examsNav"><a href="/exams">考试管理</a></li>
+                    @endcan
+
+                    @can('student', Auth::user())
+                        <li id="seeCoursesNav"><a href="/seeCourses">查看课程</a></li>
+                    @endcan
+                @endif
             </ul>
 
             <ul class="nav navbar-nav pull-right">
-                <li id="loginNav"><a href="/login">登录</a></li>
+                @if(!$signedIn)
+                    <li id="loginNav"><a href="/login">登录</a></li>
+                @endif
+
+                @if($signedIn)
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {{ $user->name }}
+                            <b class="caret"></b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/changePassword">修改密码</a>
+                            </li>
+                            <li>
+                                <a href="/logout">退出</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
             </ul>
         </nav>
     </div>
 </div>
+
+@section('scripts')
+    <script>
+        var getElementNavPath = location.pathname.split("/");
+        getElementNavPathName = getElementNavPath[1];
+        var examNavbarDict = ['teachers', 'students', 'courses', 'courseTimes', 'exams', 'seeCourses', 'login'];
+
+        $(document).ready(function(){
+            if(examNavbarDict.indexOf(getElementNavPathName) >= 0){
+                $('#'+getElementNavPathName+'Nav').addClass('active');
+            }
+        });
+    </script>
+@stop
