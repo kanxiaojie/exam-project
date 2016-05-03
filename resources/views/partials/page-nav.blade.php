@@ -19,6 +19,7 @@
                     @can('teacher', Auth::user())
                         <li id="coursesNav"><a href="/courses">课程管理</a></li>
                         <li id="courseTimesNav"><a href="/courseTimes">课时管理</a></li>
+                        <li id="modulesNav"><a href="/modules">课时管理</a></li>
                         <li id="examsNav"><a href="/exams">考试管理</a></li>
                     @endcan
 
@@ -59,7 +60,7 @@
     <script>
         var getElementNavPath = location.pathname.split("/");
         getElementNavPathName = getElementNavPath[1];
-        var examNavbarDict = ['teachers', 'students', 'courses', 'courseTimes', 'exams', 'seeCourses', 'login'];
+        var examNavbarDict = ['teachers', 'students', 'courses', 'modules', 'courseTimes', 'exams', 'seeCourses', 'login'];
 
         $(document).ready(function(){
             if(examNavbarDict.indexOf(getElementNavPathName) >= 0){

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use App\Repositories\BaseRepository;
-use App\User;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
@@ -49,5 +46,45 @@ class TeacherController extends Controller
         User::create($request->all());
 
         return redirect('/teachers');
+    }
+
+    /**
+     * @param $student_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View 修改
+     * 修改
+     * @internal param $id
+     */
+    public function edit($student_id)
+    {
+        $teacher = $this->teacher->getByStudentId($student_id);
+
+        return view('teachers.edit', compact('teacher'));
+    }
+
+    /**
+     * @param UserRequest $userRequest
+     * @param $student_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * 更新操作
+     */
+    public function update(UserRequest $userRequest, $student_id)
+    {
+        $teacher = $this->teacher->getByStudentId($student_id);
+        $teacher->update($userRequest->all());
+
+        return redirect('/teachers');
+    }
+
+    /**
+     * @param $student_id
+     * @return \Illuminate\Http\RedirectResponse
+     * 删除
+     */
+    public function destroy($student_id)
+    {
+        $teacher = $this->teacher->getByStudentId($student_id);
+        $teacher->delete();
+
+        return back();
     }
 }
