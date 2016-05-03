@@ -9,8 +9,8 @@
                 添加新{{ $who }}
             </a>
         </div>
-        <table class="table table-bordered">
-            <thead>
+        <table id="my-table" class="table table-bordered text-center">
+            <thead class="dynatable-active-page">
             <tr>
                 <th>{{ $whatRole }}</th>
                 <th>{{ $who }}姓名</th>

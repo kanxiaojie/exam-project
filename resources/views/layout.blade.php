@@ -16,6 +16,11 @@
 
     <script src="/js/jquery-2.2.2.js"></script>
     <script src="/js/libs.js"></script>
+
+    <script>
+        $('#my-table').dynatable();
+    </script>
+
     @yield('scripts')
 </body>
 </html>

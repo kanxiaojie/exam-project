@@ -15,10 +15,12 @@ elixir(function(mix) {
     mix.sass('app.scss')
         .styles([
             'libs/bootstrap.css',
-            'libs/buttons.css'
+            'libs/buttons.css',
+            'libs/jquery.dynatable.css'
         ],'./public/css/libs.css')
         .scripts([
-            'libs/bootstrap.js'
+            'libs/bootstrap.js',
+            'libs/jquery.dynatable.js'
         ],'./public/js/libs.js')
     ;
 });

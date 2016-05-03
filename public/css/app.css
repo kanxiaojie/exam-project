@@ -5751,4 +5751,7 @@ button.close {
 body {
   padding-top: 70px; }
 
+td {
+  vertical-align: middle; }
+
 /*# sourceMappingURL=app.css.map */
