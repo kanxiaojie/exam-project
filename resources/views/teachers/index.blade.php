@@ -1,0 +1,1 @@
+@include('partials.person.index', ['who' => '教师', 'uri' => 'teachers', 'whatRole' => '教师工号', 'people' => $teachers])
