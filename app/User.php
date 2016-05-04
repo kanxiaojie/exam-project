@@ -31,4 +31,22 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * 老师和课程一对多关系
+     */
+    public function course()
+    {
+        return $this->hasMany('App\Course');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     *  学生和课程多对多关系
+     */
+    public function courses()
+    {
+        return $this->belongsToMany('App\Course','course_user', 'course_id', 'user_id');
+    }
 }

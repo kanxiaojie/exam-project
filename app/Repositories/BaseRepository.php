@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Course;
 use App\User;
 
 class BaseRepository
@@ -11,5 +12,12 @@ class BaseRepository
         $user = User::where('student_id', $student_id)->first();
 
         return $user;
+    }
+
+    public function getCourseById($id)
+    {
+        $course = Course::findOrFail($id);
+
+        return $course;
     }
 }

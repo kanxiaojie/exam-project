@@ -4,6 +4,20 @@
    padding-top: 70px;
  }
 
- td{
-   vertical-align: middle;
+ .mainpanel{
+   margin-left: 220px;
+   padding: 20px;
+   background: #3399FF;
+   border-radius: 5px;
+ }
+
+ .leftpanel{
+   width: 220px;
+   position: fixed;
+   background: #fff;
+ }
+
+ .contentpanel{
+   background: #fff;
+   border-radius: 5px;
  }

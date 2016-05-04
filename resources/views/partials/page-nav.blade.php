@@ -19,7 +19,7 @@
                     @can('teacher', Auth::user())
                         <li id="coursesNav"><a href="/courses">课程管理</a></li>
                         <li id="courseTimesNav"><a href="/courseTimes">课时管理</a></li>
-                        <li id="modulesNav"><a href="/modules">课时管理</a></li>
+                        <li id="modulesNav"><a href="/modules">模块管理</a></li>
                         <li id="examsNav"><a href="/exams">考试管理</a></li>
                     @endcan
 

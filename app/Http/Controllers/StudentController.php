@@ -78,6 +78,11 @@ class StudentController extends Controller
         return redirect('/students');
     }
 
+    /**
+     * @param $student_id
+     * @return \Illuminate\Http\RedirectResponse
+     * 删除
+     */
     public function destroy($student_id)
     {
         $student = $this->student->getByStudentId($student_id);

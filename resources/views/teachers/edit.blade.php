@@ -9,5 +9,7 @@
             @include('partials.person.person-form', ['name' => $teacher->name, 'student_id' => $teacher->student_id, 'whoseId' => '教师工号', 'whoseName' => '教师姓名', 'roleId' => 2])
             <input type="hidden" id="password" name="password" value="{{ bcrypt('123456') }}">
         </form>
+
+        @include('partials.errors')
     </div>
 @stop
