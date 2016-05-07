@@ -51,7 +51,8 @@ class CourseTimeController extends Controller
      */
     public function store(CourseTimeRequest $request)
     {
-        CourseTime::create($request->all());
+        $courseTime = CourseTime::create($request->all());
+        $courseTime->modules()->attach($request->input('modules'));
 
         return redirect('/courseTimes');
     }
@@ -64,8 +65,9 @@ class CourseTimeController extends Controller
     public function edit($id)
     {
         $courseTime = $this->base->getCourseTimeById($id);
+        $moduleIds = $courseTime->modules->lists('id')->toArray();
 
-        return view('coursetimes.edit', compact('courseTime'));
+        return view('coursetimes.edit', compact('courseTime', 'moduleIds'));
     }
 
     /**
@@ -77,6 +79,8 @@ class CourseTimeController extends Controller
     public function update(CourseTimeRequest $request, $id)
     {
         $courseTime = $this->base->getCourseTimeById($id);
+        $courseTime->modules()->detach();//先分离原有关联的模块
+        $courseTime->modules()->attach($request->input('modules'));//再关联更新之后的模块
 
         $courseTime->update($request->all());
 
@@ -92,6 +96,7 @@ class CourseTimeController extends Controller
     {
         $courseTime = $this->base->getCourseTimeById($id);
         $courseTime->courses()->detach();
+        $courseTime->modules()->detach();
         $courseTime->delete();
 
         return back();

@@ -16,7 +16,8 @@ elixir(function(mix) {
         .styles([
             'libs/bootstrap.css',
             'libs/buttons.css',
-            'libs/jquery.dynatable.css'
+            'libs/jquery.dynatable.css',
+            'libs/select2.min.css'
         ],'./public/css/libs.css')
         .scripts([
             'libs/bootstrap.js',

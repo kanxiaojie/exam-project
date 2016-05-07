@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Course;
 use App\CourseTime;
+use App\Exam;
 use App\Module;
 use App\User;
 
@@ -35,5 +36,12 @@ class BaseRepository
         $module = Module::findOrFail($id);
 
         return $module;
+    }
+
+    public function getExamById($id)
+    {
+        $exam = Exam::findOrFail($id);
+
+        return $exam;
     }
 }
