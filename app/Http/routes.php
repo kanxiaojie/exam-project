@@ -18,6 +18,22 @@
            Route::resource('exams', 'ExamController', ['except' => 'show']);
 
             Route::group(['prefix' => '/courses/{id}'], function(){
+
+                Route::get('linkStudents', 'CourseOthersController@students');
+                Route::post('linkStudents/link', 'CourseOthersController@linkStudents');
+                Route::post('linkStudents/unLink', 'CourseOthersController@unLinkStudents');
+
+                Route::get('linkCourseTimes', 'CourseOthersController@courseTimes');
+                Route::post('linkCourseTimes/link', 'CourseOthersController@linkCourseTimes');
+                Route::post('linkCourseTimes/unLink', 'CourseOthersController@unLinkCourseTimes');
+
+                Route::get('linkExams', 'CourseOthersController@exams');
+                Route::post('linkExams/link', 'CourseOthersController@linkExams');
+                Route::post('linkExams/unLink', 'CourseOthersController@unLinkExams');
+
+                Route::get('grades', 'CourseOthersController@grades');
+                Route::get('grades/{student_id}', 'CourseOthersController@gradeShow');
+
                 Route::get('delete', 'CourseOthersController@delete');
             });
         });

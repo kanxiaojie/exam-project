@@ -19,6 +19,7 @@
 
     <script>
         $('#my-table').dynatable();
+        $('#my-table2').dynatable();
     </script>
 
     @yield('scripts')

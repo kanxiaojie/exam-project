@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h4>修改课时信息</h4>
+        <h4>修改考试信息</h4>
         <hr/>
 
-        <form action="/courseTimes/{{ $courseTime->id }}" method="post" enctype="multipart/form-data">
+        <form action="/exams/{{ $exam->id }}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
-            @include('coursetimes.form', ['name' => $courseTime->name, 'description' => $courseTime->description, 'what' => '课时'])
+            @include('coursetimes.form', ['name' => $exam->name, 'description' => $exam->description, 'what' => '考试'])
         </form>
 
         @if(count($errors) > 0)
