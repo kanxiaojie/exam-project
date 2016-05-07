@@ -29,7 +29,7 @@ class CourseController extends Controller
         if(Auth::user()->role_id == 3){
             $courses = Course::orderBy('name')->get();
         }elseif(Auth::user()->role_id == 2){
-            $courses = Auth::user()->course()->orderBy('name')->get();
+            $courses = Course::where('user_id', Auth::user()->id)->orderBy('name')->get();
         }else{
             $courses = Auth::user()->courses()->orderBy('name')->get();
         }
@@ -87,8 +87,8 @@ class CourseController extends Controller
     public function destroy($id)
     {
         $course = $this->course->getCourseById($id);
-        $course->user()->detach();
-        $course->users()->detach();
+//        $course->user()->detach();
+//        $course->users()->detach();
         $course->delete();
 
         return redirect('/courses');

@@ -49,4 +49,31 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Course','course_user', 'course_id', 'user_id');
     }
+
+    /**
+     * 老师和课时是一对多关系
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function courseTime()
+    {
+        return $this->hasMany('App\CourseTime');
+    }
+
+    /**
+     * 教师和模块之间是一对多关系
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function module()
+    {
+        return $this->hasMany('App\Module');
+    }
+
+    /**
+     * 教师和考试之间是一对多关系
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function exam()
+    {
+        return $this->hasMany('App\Exam');
+    }
 }

@@ -20,7 +20,8 @@ elixir(function(mix) {
         ],'./public/css/libs.css')
         .scripts([
             'libs/bootstrap.js',
-            'libs/jquery.dynatable.js'
+            'libs/jquery.dynatable.js',
+            'libs/select2.min.js'
         ],'./public/js/libs.js')
     ;
 });

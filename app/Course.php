@@ -27,4 +27,22 @@ class Course extends Model
     {
         return $this->belongsToMany('App\User','course_user', 'course_id', 'user_id');
     }
+
+    /**
+     * 课程和课时是多对多关系
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function courseTimes()
+    {
+        return $this->belongsToMany('App\CourseTime', 'course_coursetime', 'course_id', 'coursetime_id');
+    }
+
+    /**
+     * 课程和考试是多对多关系
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function exams()
+    {
+        return $this->belongsToMany('App\Exam', 'course_exam', 'course_id', 'exam_id');
+    }
 }

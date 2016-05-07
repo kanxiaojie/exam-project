@@ -5,6 +5,7 @@
         <li><a href="#">关联课时</a></li>
         <li><a href="#">关联考核</a></li>
         <li><a href="#">查询成绩</a></li>
+        <li id="deleteNav"><a href="/courses/{{ $course->id }}/delete">课程删除</a></li>
     </ul>
 </div>
 
@@ -12,7 +13,7 @@
     <script>
         var getExamNavPath = location.pathname.split("/");
         getExamNavPathName = getExamNavPath[3];
-        var examNavbarDict = ['edit'];
+        var examNavbarDict = ['edit', 'delete'];
 
         $(document).ready(function(){
             if(examNavbarDict.indexOf(getExamNavPathName) >= 0){
